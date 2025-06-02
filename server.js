@@ -1,6 +1,6 @@
 const { createServer } = require('http');
-// const next = require('next');
-const next = require('./node_modules/next');
+const next = require('next');
+// const next = require('../node_modules/next');
 
 
 const port = process.env.PORT || 3000;
