@@ -1,4 +1,5 @@
 'use client';
+
 import { Calendar } from '@/components/ui/calendar';
 import { useEffect, useState } from 'react';
 import { useToast } from '@/components/ui/use-toast';
@@ -22,6 +23,7 @@ function BookingCalendar() {
     bookings,
     today: currentDate,
   });
+
   const { toast } = useToast();
   const unavailableDates = generateDisabledDates(blockedPeriods);
 
@@ -37,19 +39,20 @@ function BookingCalendar() {
       }
       return false;
     });
+
     useProperty.setState({ range });
-  }, [range]);
+  }, [range, toast, unavailableDates]); // ✅ Add toast and unavailableDates
 
   return (
     <Calendar
-      mode='range'
+      mode="range"
       defaultMonth={currentDate}
       selected={range}
       onSelect={setRange}
-      className='mb-4'
-      // add disabled
+      className="mb-4"
       disabled={blockedPeriods}
     />
   );
 }
+
 export default BookingCalendar;

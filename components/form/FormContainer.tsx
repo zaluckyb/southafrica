@@ -23,7 +23,7 @@ function FormContainer({
     if (state.message) {
       toast({ description: state.message });
     }
-  }, [state]);
+  }, [state, toast]); // ✅ Include toast in the dependency array
 
   return <form action={formAction}>{children}</form>;
 }
